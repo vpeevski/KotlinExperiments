@@ -6,6 +6,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.withContext
 
+// SupervisorScope is mainly used in functions that start multiple independent tasks.
+// The supervisorScope function also behaves a lot like coroutineScope:
+// it creates a CoroutineScope that inherits from the outer scope and
+// calls the specified suspend block in it. The difference is that it
+// overrides the context’s Job with SupervisorJob, so it is not cancelled
+// when a child raises an exception.
 suspend fun main(): Unit = coroutineScope {
     supervisorScope {
         launch {
