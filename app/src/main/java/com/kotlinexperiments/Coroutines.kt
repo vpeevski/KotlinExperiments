@@ -49,7 +49,7 @@ suspend fun delayCancelable(timeMillis: Long) = suspendCancellableCoroutine { co
 //    println("Resumed")
 }
 
-suspend fun requestUserRepo(success: Boolean = true): ApiResponse<User> {
+suspend fun requestUserRepo(success: Boolean = true): ApiResponse<Uzer> {
     return suspendCancellableCoroutine { cont ->
         requestUserWithCallback(responseCallback = { apiResponse ->
             println(apiResponse)
@@ -61,19 +61,19 @@ suspend fun requestUserRepo(success: Boolean = true): ApiResponse<User> {
     };
 }
 
-fun requestUserBlocking(): User {
+fun requestUserBlocking(): Uzer {
     Thread.sleep(2000)
-    return User(id = Random(1000).nextInt(), name = "Ivan")
+    return Uzer(id = Random(1000).nextInt(), name = "Ivan")
 }
 
-fun requestUserWithCallback(responseCallback: (ApiResponse<User>) -> Unit, succeed: Boolean) {
+fun requestUserWithCallback(responseCallback: (ApiResponse<Uzer>) -> Unit, succeed: Boolean) {
     Thread.sleep(2000)
     return if (succeed)
-        responseCallback(ApiResponse.Success(User(id = Random(1000).nextInt(), name = "Ivan")))
+        responseCallback(ApiResponse.Success(Uzer(id = Random(1000).nextInt(), name = "Ivan")))
     else responseCallback(ApiResponse.Error(java.lang.Exception("Api Error")))
 }
 
-data class User(val id: Number, val name: String)
+data class Uzer(val id: Number, val name: String)
 
 sealed class ApiResponse<out T> {
     data class Success<R>(val data: R) : ApiResponse<R>()
