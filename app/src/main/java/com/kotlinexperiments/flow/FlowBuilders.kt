@@ -90,18 +90,22 @@ suspend fun main() {
     // The flow builder is the most basic way to create a flow.
     // All other options are based on it.
     val makeFlow = {
-        flow { // 1 block called in collect method of created Flow object.
+        flow { // 1: block called in collect method of created Flow object.
             // Its receiver is the FlowCollector object, which is defined at 2 with a lambda expression.
             repeat(3) {
                 delay(1000)
-                emit(it) // Calls FlowCollector's emit method defined by lambda in collect method.
+                emit(it) // Calls FlowCollector's emit(value) method defined by lambda in collect method.
             }
         }
     }
     // Calls block function (lambda expression defined at 1) on the FlowCollector interface
-    makeFlow().collect { // Builds a FlowCollector (functional interface) object with emit defined by lambda expression.
+    makeFlow().collect { // 2: Builds a FlowCollector (functional interface) object with emit defined by lambda expression.
         print(it)
     }
+    // Thus when we call collect, we
+    // start executing the lambda expression defined at 1, and when it calls
+    // emit, it calls the lambda expression defined at 2. This is how flow
+    // works. Everything else is built on top of that.
 }
 
 suspend fun getUserName(): String {
