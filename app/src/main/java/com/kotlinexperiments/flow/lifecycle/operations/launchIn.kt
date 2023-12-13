@@ -21,3 +21,13 @@ suspend fun main(): Unit = coroutineScope {
         .onEach { println(it) }
         .launchIn(this)
 }
+
+// NOTE: In Android typical usage is:
+//fun updateNews() {
+//    newsFlow()
+//        .onStart { showProgressBar() }
+//        .onCompletion { hideProgressBar() }
+//        .onEach { view.showNews(it) }
+//        .catch { view.handleError(it) }
+//        .launchIn(viewModelScope)
+//}
