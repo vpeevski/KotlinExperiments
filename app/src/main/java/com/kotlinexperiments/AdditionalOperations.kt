@@ -1,6 +1,7 @@
 //package com.kotlinexperiments
 //
 //import kotlinx.coroutines.CoroutineScope
+//import kotlinx.coroutines.coroutineScope
 //import kotlinx.coroutines.launch
 //
 //// TODO Make it work
