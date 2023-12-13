@@ -26,4 +26,6 @@ suspend fun main() {
         .onEach { delay(1000) }
         .onStart { emit(0) }
         .collect { println(it) } // 012
+
+    // NOTE: onStart is suitable candidate to showing loading indicators or progress bars.
 }

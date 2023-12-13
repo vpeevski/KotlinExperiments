@@ -28,5 +28,5 @@ suspend fun main() = coroutineScope {
     delay(1100)
     job.cancel()
 
-    // NOTE: onCompletion is suitable candidate to hide loading indicators or progress bars
+    // NOTE: onCompletion is suitable candidate to hide loading indicators or progress bars.
 }
