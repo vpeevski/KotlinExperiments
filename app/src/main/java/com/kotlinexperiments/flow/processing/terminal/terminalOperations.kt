@@ -27,3 +27,6 @@ suspend fun Flow<Int>.sum(): Int {
     }
     return sum
 }
+
+// Note: Similarly, you can implement nearly any terminal operation with
+// just the collect method.
