@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.scan
 
 // scan is an alternative to fold.
-// It is intermediate operation that produces
-// all intermediate accumulator values.
+// It is intermediate operation (not terminal)
+// that produces all intermediate accumulator values.
 suspend fun main() {
     val list = listOf(1, 2, 3, 4, 5)
     val res = list.scan(0) { acc, i -> acc + i }
