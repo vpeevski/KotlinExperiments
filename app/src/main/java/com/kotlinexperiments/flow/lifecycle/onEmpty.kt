@@ -1,4 +1,4 @@
-package com.kotlinexperiments.flow.lifecycle.operations
+package com.kotlinexperiments.flow.lifecycle
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package com.kotlinexperiments.flow.exceptions
+package com.kotlinexperiments.flow.lifecycle.exceptions
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
