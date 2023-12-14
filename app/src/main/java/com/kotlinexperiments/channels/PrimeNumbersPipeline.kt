@@ -6,7 +6,6 @@ import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.channels.produce
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlin.system.measureTimeMillis
 
 fun CoroutineScope.allNumbersFrom(start: Int) = produce {

@@ -3,29 +3,30 @@ package com.kotlinexperiments
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.thread
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 import kotlin.random.Random
 
-//suspend fun main() {
-//    println("Before")
-////    suspendCoroutine<Unit> { continuation ->
-////        thread {
-////            println("Suspended")
-////            Thread.sleep(2000)
-////            continuation.resume(Unit)
-////            println("Resumed")
-////        }
-//
-////    }
-////    delay(1000)
-//    val user1 = requestUserRepo()
-//    println("### Local User: $user1")
-//    val result = runCatching { requestUserRepo(success = false) }
-//    println("### Result: $result")
-//    println("After")
-//}
+suspend fun main() {
+    println("Before")
+    suspendCoroutine<Unit> { continuation ->
+        thread {
+            println("Suspended")
+            Thread.sleep(2000)
+            continuation.resume(Unit)
+            println("Resumed")
+        }
+
+    }
+    delay(1000)
+    val user1 = requestUserRepo()
+    println("### Local User: $user1")
+    val result = runCatching { requestUserRepo(success = false) }
+    println("### Result: $result")
+    println("After")
+}
 
 val executor = Executors.newSingleThreadScheduledExecutor {
     Thread(it, "scheduler").apply {
