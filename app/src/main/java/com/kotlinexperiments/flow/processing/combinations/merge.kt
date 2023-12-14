@@ -36,3 +36,13 @@ suspend fun mergeDelayed() {
     val together: Flow<Number> = merge(ints, doubles)
     together.collect { println(it) }
 }
+
+// Note 1: We use merge when we have multiple sources of events that should
+// lead to the same actions.
+// fun listenForMessages() {
+//     merge(userSentMessages, messagesNotifications)
+//         .onEach { displayMessage(it) }
+//         .launchIn(scope)
+// }
+
+// Note 2: See implementation with channels - com/kotlinexperiments/flow/MergeFlows.kt
