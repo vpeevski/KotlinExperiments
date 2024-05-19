@@ -25,17 +25,21 @@ suspend fun main(): Unit = coroutineScope {
     println("Hello,")
 
     // Both delay calls suspend parent coroutine scope
-    val a = coroutineScope {
-        delay(1000)
-        10
+    val timeTaken = measureTime {
+
+        val a = coroutineScope {
+            delay(1000)
+            10
+        }
+        println("a is calculated")
+        val b = coroutineScope {
+            delay(1000)
+            20
+        }
+        println(a) // 10
+        println(b)
     }
-    println("a is calculated")
-    val b = coroutineScope {
-        delay(1000)
-        20
-    }
-    println(a) // 10
-    println(b)
+    println("Time taken (2 delays): $timeTaken")
 
     println("####################")
     launch(CoroutineName("Parent Coroutine Context")) {
