@@ -1,4 +1,4 @@
-package com.kotlinexperiments.builder
+package com.builder
 
 data class Person(
     val name: String,

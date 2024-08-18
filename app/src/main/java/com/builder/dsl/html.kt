@@ -1,4 +1,4 @@
-package com.kotlinexperiments.builder.dsl
+package com.builder.dsl
 
 interface Element {
     fun render(builder: StringBuilder, indent: String)
