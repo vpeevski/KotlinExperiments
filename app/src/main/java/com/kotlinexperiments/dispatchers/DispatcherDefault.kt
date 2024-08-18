@@ -1,4 +1,4 @@
-package com.kotlinexperiments
+package com.kotlinexperiments.dispatchers
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -9,7 +9,7 @@ import kotlin.random.Random
 // Dispatchers.Default, which is designed to run CPU-intensive
 // operations. It has a pool of threads with a size equal to the number
 // of cores in the machine your code is running on (but not less than two).
-suspend fun main() = coroutineScope {
+suspend fun main(): Unit = coroutineScope {
     repeat(20) {
         launch { // or launch(Dispatchers.Default) {
             // To make it busy

@@ -1,4 +1,4 @@
-package com.kotlinexperiments
+package com.kotlinexperiments.dispatchers
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope

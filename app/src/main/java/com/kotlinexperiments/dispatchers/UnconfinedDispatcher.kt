@@ -1,5 +1,6 @@
-package com.kotlinexperiments
+package com.kotlinexperiments.dispatchers
 
+import com.kotlinexperiments.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext

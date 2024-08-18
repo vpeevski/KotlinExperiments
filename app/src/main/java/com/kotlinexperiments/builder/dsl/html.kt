@@ -98,7 +98,7 @@ fun main () {
     val stringBuilder = StringBuilder()
     println(html {
         head {
-            title {
+            title {+"Some title"
             }
         }
     })
