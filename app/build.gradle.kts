@@ -34,7 +34,23 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    // Kotest
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+        unitTests.all {
+            // Required by Kotest
+            it.useJUnitPlatform()
+        }
+    }
 }
+//
+//tasks.withType<Test>().configureEach {
+//    systemProperty("kotlinx.coroutines.debug", "on")
+//    useJUnitPlatform()
+//}
 
 dependencies {
 
@@ -49,7 +65,15 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:3.1.8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx3:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
-    testImplementation("junit:junit:4.13.2")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.8.1")
+    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.9.1")
+
+
+//    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
