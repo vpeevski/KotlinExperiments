@@ -5,7 +5,7 @@ import kotlinx.coroutines.supervisorScope
 
 class MyException : Throwable()
 
-suspend fun main() = supervisorScope {
+suspend fun main() : Unit = supervisorScope {
     val str1 = async<String> {
         delay(1000)
         throw MyException()
