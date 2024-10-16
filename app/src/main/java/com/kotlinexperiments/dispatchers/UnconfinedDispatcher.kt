@@ -1,6 +1,6 @@
 package com.kotlinexperiments.dispatchers
 
-import com.kotlinexperiments.delay
+import com.kotlinexperiments.delayNotCancelable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
@@ -13,7 +13,7 @@ suspend fun main(): Unit =
     withContext(newSingleThreadContext("Thread1")) {
         var continuation: Continuation<Unit>? = null
         launch(newSingleThreadContext("Thread2")) {
-            delay(1000)
+            delayNotCancelable(1000)
             continuation?.resume(Unit)
         }
         launch(Dispatchers.Unconfined) {
@@ -22,7 +22,7 @@ suspend fun main(): Unit =
                 continuation = it
             }
             println(Thread.currentThread().name) // Thread2
-            delay(1000)
+            delayNotCancelable(1000)
             println(Thread.currentThread().name)
 // kotlinx.coroutines.DefaultExecutor
 // (used by delay)

@@ -11,11 +11,11 @@ fun main(): Unit = runBlocking {
 //    }
     val job = Job()
     launch(job) { // the new job replaces one from parent
-        delay(1000)
+        delayNotCancelable(1000)
         println("Text 1")
     }
     launch(job) { // the new job replaces one from parent
-        delay(2000)
+        delayNotCancelable(2000)
         println("Text 2")
     }
 //    job.join()

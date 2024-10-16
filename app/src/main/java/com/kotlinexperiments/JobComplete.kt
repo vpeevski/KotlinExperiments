@@ -9,13 +9,13 @@ suspend fun main(): Unit = coroutineScope {
 
     launch(job) {
         repeat(5) { num ->
-            delay(200) // Already started before completion
+            delayNotCancelable(200) // Already started before completion
             println("Rep$num")
         }
     }
 
     launch {
-        delay(500)
+        delayNotCancelable(500)
         if (job.complete()) {
             println("Job completed: $job")
         }

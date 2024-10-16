@@ -10,11 +10,11 @@ fun main() = runBlocking {
     // USE supervisorScope INSTEAD !!!
     withContext(SupervisorJob()) { // CAUTION !!! JOB IS NOT INHERITED. IT CREATES A NEW JOB WITH PARENT SUPERVISOR WHICH IS USELESS
         launch {
-            delay(1000)
+            delayNotCancelable(1000)
             throw Error()
         }
         launch {
-            delay(2000)
+            delayNotCancelable(2000)
             println("Done")
         }
     }

@@ -74,7 +74,7 @@ data class UserData(val id: String)
 
 class FakeNetworkService : NetworkService {
     override suspend fun fetchUser(id: Int): UserData {
-        delay(2)
+        delayNotCancelable(2)
         return UserData("User$id")
     }
 }

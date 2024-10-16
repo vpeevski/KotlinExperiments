@@ -20,7 +20,7 @@ suspend fun main() {
         }
 
     }
-    delay(1000)
+    delayNotCancelable(1000)
     val user1 = requestUserRepo()
     println("### Local User: $user1")
     val result = runCatching { requestUserRepo(success = false) }
@@ -34,7 +34,7 @@ val executor = Executors.newSingleThreadScheduledExecutor {
     }
 }
 
-suspend fun delay(timeMillis: Long) = suspendCoroutine { continuation ->
+suspend fun delayNotCancelable(timeMillis: Long) = suspendCoroutine { continuation ->
 //    println("Suspended")
     executor.schedule({
         continuation.resume(Unit)

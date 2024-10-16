@@ -40,7 +40,7 @@ suspend fun main(): Unit = coroutineScope {
             }
         }
     }
-    delay(1000)
+    delayNotCancelable(1000)
     job.cancelAndJoin()
     println("Cancel successfully !!!")
 }

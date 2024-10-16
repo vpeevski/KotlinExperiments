@@ -13,7 +13,7 @@ fun main() {
     val standardTestDispatcher = StandardTestDispatcher()
     CoroutineScope(standardTestDispatcher).launch {
         print("A")
-        delay(1)
+        delayNotCancelable(1)
         print("B")
     }
 //    standardTestDispatcher.scheduler.runCurrent() // To print A
@@ -22,7 +22,7 @@ fun main() {
 
     CoroutineScope(UnconfinedTestDispatcher()).launch {
         print("C")
-        delay(1)
+        delayNotCancelable(1)
         print("D")
     }
 }

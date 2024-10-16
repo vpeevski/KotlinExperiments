@@ -8,13 +8,13 @@ suspend fun main(): Unit = coroutineScope {
     val job = Job()
     launch(job) {
         repeat(5) { num ->
-            delay(200)
+            delayNotCancelable(200)
             println("Job$num")
         }
     }
 
     launch {
-        delay(500)
+        delayNotCancelable(500)
         job.completeExceptionally(Error("Error message"))
     }
 

@@ -18,10 +18,10 @@ suspend fun main(): Unit = coroutineScope {
             println("Printing $i")
         }
     }
-    delay(1000)
+    delayNotCancelable(1000)
     job1.cancelAndJoin()
     println("Cancelled successfully 1")
-    delay(1000)
+    delayNotCancelable(1000)
 
     println("####################")
 
@@ -33,10 +33,10 @@ suspend fun main(): Unit = coroutineScope {
             println("Printing...")
         } while (isActive)
     }
-    delay(1000)
+    delayNotCancelable(1000)
     job2.cancelAndJoin()
     println("Cancelled successfully 2")
-    delay(1000)
+    delayNotCancelable(1000)
 
     println("####################")
 
@@ -50,7 +50,7 @@ suspend fun main(): Unit = coroutineScope {
             println("Printing $num")
         }
     }
-    delay(1000)
+    delayNotCancelable(1000)
     job3.cancelAndJoin()
     println("Cancelled successfully 3")
 }

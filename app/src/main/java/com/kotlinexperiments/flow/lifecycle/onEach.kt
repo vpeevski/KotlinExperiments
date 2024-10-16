@@ -1,6 +1,6 @@
 package com.kotlinexperiments.flow.lifecycle
 
-import com.kotlinexperiments.delay
+import com.kotlinexperiments.delayNotCancelable
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onEach
 
@@ -12,7 +12,7 @@ suspend fun main() {
     // To react to each flowing value, we use the onEach function.
     flowOf(1, 2, 3, 4)
         .onEach {
-            delay(1000)
+            delayNotCancelable(1000)
             print(it)
         } // onEach lambda expression is suspending, and elements are processed one after another in order (sequentially).
         .collect {} // 1234

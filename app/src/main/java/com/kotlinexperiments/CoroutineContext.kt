@@ -24,12 +24,12 @@ suspend fun main(): Unit = coroutineScope {
     withContext(CoroutineName("Parent")) {
         myLog("Started") // [main] Started
         val v1 = async {
-            delay(500)
+            delayNotCancelable(500)
             myLog("Running async") // [Parent]: Running async
             42
         }
         launch {
-            delay(1000)
+            delayNotCancelable(1000)
             myLog("Running launch") // [Parent]: Running launch
         }
         // Child can override parent context.
@@ -38,29 +38,29 @@ suspend fun main(): Unit = coroutineScope {
         // the child context always overrides elements
         // with the same key from the parent context.
 
-        delay(2000)
+        delayNotCancelable(2000)
         println("###")
         println("### Child can override parent context.: ")
         launch(CoroutineName("Child Context")) {
-            delay(500)
+            delayNotCancelable(500)
             myLog("Second launch running") // [Child Context]: Second launch running
         }
         myLog("The answer is ${v1.await()}")
-        delay(1000)
+        delayNotCancelable(1000)
 
         // Accessing context in a suspending function
         println("###")
         println("### Accessing context in a suspending function: ")
         withContext(CoroutineName("Outer")) {
-            delay(500)
+            delayNotCancelable(500)
             printName()
             launch(CoroutineName("Inner")) {
-                delay(1000)
+                delayNotCancelable(1000)
                 printName()
             }
 
         }
-        delay(2000)
+        delayNotCancelable(2000)
         println("###")
     }
 }

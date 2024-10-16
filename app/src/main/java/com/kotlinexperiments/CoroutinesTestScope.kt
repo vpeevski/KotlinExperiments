@@ -1,9 +1,7 @@
 package com.kotlinexperiments
 
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -13,9 +11,9 @@ import kotlinx.coroutines.test.runCurrent
 suspend fun main() = coroutineScope {
     val scope = TestScope()
     scope.launch {
-        delay(1000)
+        delayNotCancelable(1000)
         println("First done")
-        delay(1000)
+        delayNotCancelable(1000)
         println("Coroutine done")
     }
     println("[${scope.currentTime}] Before") // [0] Before

@@ -17,14 +17,14 @@ fun main() = runBlocking {
         runBlocking {
             println("World Blocking")
         }
-        delay(1000)
+        delayNotCancelable(1000)
         println("World")
     }
     println("Hello")
-    delay(2000) // Needed as GlobalScope coroutines are NOT is not waited to finish
+    delayNotCancelable(2000) // Needed as GlobalScope coroutines are NOT is not waited to finish
 
     launch {
-        delay(1000)
+        delayNotCancelable(1000)
         println("World_1")
     }
     // No need to delay, launch is run in child scope of runBlocking scope.

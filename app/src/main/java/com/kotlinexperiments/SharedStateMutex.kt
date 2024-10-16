@@ -14,7 +14,7 @@ class MessagesRepository {
     private val messages = mutableListOf<String>()
     private val mutex = Mutex()
     suspend fun add(message: String) = mutex.withLock {
-        delay(1000) // Lock is not unlocked, no other coroutines can use thread.
+        delayNotCancelable(1000) // Lock is not unlocked, no other coroutines can use thread.
         messages.add(message)
     }
 }

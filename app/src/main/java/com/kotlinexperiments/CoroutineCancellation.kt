@@ -2,7 +2,6 @@ package com.kotlinexperiments
 
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 suspend fun main(): Unit = coroutineScope {
@@ -13,7 +12,7 @@ suspend fun main(): Unit = coroutineScope {
             println("Printing $i")
         }
     }
-    delay(1100)
+    delayNotCancelable(1100)
 //    job.cancel()
 //    job.join()
     job.cancelAndJoin()

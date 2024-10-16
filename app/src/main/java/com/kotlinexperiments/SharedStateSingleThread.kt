@@ -13,7 +13,7 @@ class MessagesRepositorySingleThread {
 
     suspend fun add(message: String) =
         withContext(dispatcher) {
-            delay(1000) // Other coroutines can use the thread!
+            delayNotCancelable(1000) // Other coroutines can use the thread!
             messages.add(message)
         }
 }

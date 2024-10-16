@@ -5,7 +5,6 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.supervisorScope
 
 fun main(): Unit = runBlocking {
 // Don't wrap in a try-catch here. It will be ignored.
@@ -56,11 +55,11 @@ fun main(): Unit = runBlocking {
     // Instead do this
     val job = SupervisorJob(coroutineContext.job) // Has parent, otherwise need join.
     launch(job) {
-        delay(1000)
+        delayNotCancelable(1000)
         throw Error("Some error")
     }
     launch(job) {
-        delay(2000)
+        delayNotCancelable(2000)
         println("Will be printed")
     }
 //    job.join() // Needed if supervisor job does not have current job from runBlocking as parent

@@ -15,15 +15,15 @@ import kotlinx.coroutines.withContext
 suspend fun main(): Unit = coroutineScope {
     supervisorScope {
         launch {
-            delay(1000)
+            delayNotCancelable(1000)
             throw Error("Some error")
         }
         launch {
-            delay(2000)
+            delayNotCancelable(2000)
             println("Will be printed")
         }
     }
-    delay(1000)
+    delayNotCancelable(1000)
     println("Done")
 
     println("##### Use supervisorScope #####")

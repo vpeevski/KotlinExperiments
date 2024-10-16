@@ -2,9 +2,7 @@ package com.kotlinexperiments
 
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
@@ -19,7 +17,7 @@ import kotlin.time.measureTime
 @OptIn(ExperimentalTime::class)
 suspend fun main(): Unit = coroutineScope {
     launch {
-        delay(1000L)
+        delayNotCancelable(1000L)
         println("World!")
     }
     println("Hello,")
@@ -28,12 +26,12 @@ suspend fun main(): Unit = coroutineScope {
     val timeTaken = measureTime {
 
         val a = coroutineScope {
-            delay(1000)
+            delayNotCancelable(1000)
             10
         }
         println("a is calculated")
         val b = coroutineScope {
-            delay(1000)
+            delayNotCancelable(1000)
             20
         }
         println(a) // 10

@@ -1,6 +1,6 @@
 package com.coroutines.dump
 
-import com.kotlinexperiments.delay
+import com.kotlinexperiments.delayNotCancelable
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -24,7 +24,7 @@ class Counter {
 
     suspend fun incCounter() {
         customCoroutineScope.async {
-            delay(2000)
+            delayNotCancelable(2000)
             throw IllegalStateException("Counter error")
             _counterState.value += 1
         }.await()

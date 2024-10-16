@@ -14,6 +14,6 @@ suspend fun main(): Unit = coroutineScope {
         println("Finished: $ex") // ex is null if completed normally
         println("Always called: Do cleanup here...")
     }
-    delay(400)
+    delayNotCancelable(400)
     job.cancelAndJoin()
 }
