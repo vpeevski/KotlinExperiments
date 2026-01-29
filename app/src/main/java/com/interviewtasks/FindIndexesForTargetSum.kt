@@ -13,6 +13,11 @@ fun main() {
     val targetPairWithMap = findTargetPairMap(listOf(5, 2, 6, 4, 1), 6)
     println("targetPair = $targetPairWithMap")
 
+    println("############# Target sum with sorted input ##################")
+    val targetPairWithSortedInput =
+        findTargetSumSorted(listOf(1, 7, 14, 23, 35, 28, 30, 40, 50, 65, 79, 100), 85)
+    println("targetPairWithSortedInput = $targetPairWithSortedInput")
+
 }
 
 private fun findTargetSumIndexes(nums: List<Int>, target: Int): Pair<Int, Int>? {
@@ -57,4 +62,19 @@ private fun findTargetPairWithSet(inputList: List<Int>, target: Int): Boolean {
         println("targets: $targets")
     }
     return false
+}
+
+private fun findTargetSumSorted(inputList: List<Int>, target: Int): Pair<Int, Int>? {
+    var leftIndex = 0
+    var rightIndex = inputList.size - 1
+
+    while (leftIndex < rightIndex) {
+        val sum: Int = inputList[leftIndex] + inputList[rightIndex]
+        when {
+            sum == target -> return Pair(inputList[leftIndex], inputList[rightIndex])
+            sum < target -> leftIndex++
+            else -> rightIndex--
+        }
+    }
+    return null
 }
